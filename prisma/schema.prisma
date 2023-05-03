@@ -12,7 +12,7 @@ datasource db {
 
 model Ticket {
   id           Int     @id @default(autoincrement())
-  title        String
+  title        String  @db.VarChar(100)
   description  String?
   statut       Statut  @default(AFAIRE)
 }

@@ -1,0 +1,12 @@
+Pour démarrer le projet :
+
+- Avoir une base de données POSTGRESQL
+- Changer l'URL ce celle-ci de le .env
+
+- Faire la commande : npm i
+- Migrer la base de données avec la commande : npx prisma migrate dev
+- Faire la commande : npm run start
+
+- Utilise l'API en local avec le port indiqué dans la console
+
+- Récupérer le fichier Postman envoyé par MAIL contenant toutes les requêtes.
