@@ -3,8 +3,10 @@ const app = express();
 const port = process.env.PORT || 8000;
 const repository = require('./Repository/repository.js')
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 app.use(bodyParser.json());
+app.use(cors());
 
 app.get('/', (req, res) => {
     res.set('Content-Type', 'text/html');
@@ -18,6 +20,16 @@ app.get('/tickets', async (req, res) => {
       } catch (error) {
         console.error(error);
         res.status(500).send('Error fetching tickets');
+      }
+})
+
+app.get('/tickets/:id', async (req, res) => {
+    try {
+        const ticket = await repository.getTicket(Number(req.params.id));
+        res.status(200).json(ticket);
+      } catch (error) {
+        console.error(error);
+        res.status(500).send('Error fetching ticket');
       }
 })
 

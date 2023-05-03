@@ -10,6 +10,15 @@ async function getTickets() {
     return tickets
 }
 
+async function getTicket(id) {
+    const tickets = await prisma.ticket.findUnique({
+      where: {
+        id
+      },
+    })
+    return tickets
+}
+
 async function createTicket(body) {
   const ticket = await prisma.ticket.create({
     data: {
@@ -51,7 +60,8 @@ module.exports = {
     getTickets,
     createTicket,
     updateTicket,
-    deleteTicket
+    deleteTicket,
+    getTicket
   }
   
   main()
